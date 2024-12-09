@@ -1,0 +1,150 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(DPEducacionalApp());
+}
+
+class DPEducacionalApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Portal Educacional DP',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Portal Educacional DP'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppButton(
+              label: 'Escola do DP',
+              icon: Icons.video_library,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EscolaDPPage()));
+              },
+            ),
+            AppButton(
+              label: 'Atualizações',
+              icon: Icons.update,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AtualizacoesPage()));
+              },
+            ),
+            AppButton(
+              label: 'Calculadoras Trabalhistas',
+              icon: Icons.calculate,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CalculadorasPage()));
+              },
+            ),
+            AppButton(
+              label: 'Tabelas Práticas',
+              icon: Icons.table_chart,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TabelasPage()));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AppButton extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const AppButton({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        ),
+        icon: Icon(icon, size: 24),
+        label: Text(label),
+        onPressed: onTap,
+      ),
+    );
+  }
+}
+
+class EscolaDPPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Escola do DP'),
+      ),
+      body: Center(
+        child: Text('Videoaulas disponíveis em breve!'),
+      ),
+    );
+  }
+}
+
+class AtualizacoesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Atualizações'),
+      ),
+      body: Center(
+        child: Text('Atualizações do Departamento Pessoal.'),
+      ),
+    );
+  }
+}
+
+class CalculadorasPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Calculadoras Trabalhistas'),
+      ),
+      body: Center(
+        child: Text('Ferramentas de cálculo serão adicionadas aqui.'),
+      ),
+    );
+  }
+}
+
+class TabelasPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tabelas Práticas'),
+      ),
+      body: Center(
+        child: Text('Tabelas com alíquotas e índices.'),
+      ),
+    );
+  }
+}
